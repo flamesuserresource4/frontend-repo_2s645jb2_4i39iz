@@ -1,84 +1,67 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Droplets, Sparkles, Brush, Shield, SprayCan, Wand2 } from 'lucide-react';
+import { Car, ShieldCheck, Sparkles, Wand2 } from 'lucide-react';
 
 const services = [
   {
-    icon: Droplets,
-    title: 'Complete Wash',
-    desc: 'Touchless foam pre-soak, deep clean, and spotless rinse with purified water.',
-    accent: 'from-cyan-500/20 to-cyan-300/10',
+    icon: Car,
+    title: 'Exterior Detailing',
+    desc: 'Deep-clean wash, decontamination, and gloss enhancement with safe two-bucket method.',
+    accent: 'from-emerald-400/30 to-emerald-300/10',
   },
   {
     icon: Sparkles,
-    title: 'Premium Detailing',
-    desc: 'Exterior and interior detailing with realistic reflections and finish.',
-    accent: 'from-blue-500/20 to-blue-300/10',
+    title: 'Ceramic Coating',
+    desc: 'Long-lasting hydrophobic protection for paint, glass, and wheels with brilliant shine.',
+    accent: 'from-sky-400/30 to-sky-300/10',
   },
   {
-    icon: Brush,
-    title: 'Interior Deep Clean',
-    desc: 'Steam clean, leather treatment, and hypoallergenic sanitization.',
-    accent: 'from-fuchsia-500/20 to-fuchsia-300/10',
+    icon: ShieldCheck,
+    title: 'Paint Protection',
+    desc: 'Protect high-impact areas with durable protection. Add years of resilience and clarity.',
+    accent: 'from-fuchsia-400/30 to-fuchsia-300/10',
   },
   {
     icon: Wand2,
-    title: 'Machine Polishing',
-    desc: 'Multi-stage correction for mirror-like gloss and swirl removal.',
-    accent: 'from-emerald-500/20 to-emerald-300/10',
-  },
-  {
-    icon: SprayCan,
-    title: 'Ceramic Coating',
-    desc: 'Hydrophobic nano-coating for deep gloss and long-term protection.',
-    accent: 'from-teal-500/20 to-teal-300/10',
-  },
-  {
-    icon: Shield,
-    title: 'Paint Protection Film (PPF)',
-    desc: 'Self-healing PPF with precision edge wrap for invisible armor.',
-    accent: 'from-sky-500/20 to-sky-300/10',
+    title: 'Interior Refresh',
+    desc: 'Steam clean, leather conditioning, and odor neutralization for a like-new cabin.',
+    accent: 'from-amber-400/30 to-amber-300/10',
   },
 ];
 
+function ServiceCard({ icon: Icon, title, desc, accent }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.4 }}
+      transition={{ duration: 0.6 }}
+      className="relative rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-6 overflow-hidden"
+    >
+      <div className={`pointer-events-none absolute -inset-8 bg-gradient-to-br ${accent} blur-3xl opacity-20`} />
+      <div className="relative z-10">
+        <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-white/10 border border-white/15 text-white">
+          <Icon className="w-6 h-6" />
+        </div>
+        <h3 className="mt-4 text-lg font-semibold text-white">{title}</h3>
+        <p className="mt-2 text-sm text-slate-300/80">{desc}</p>
+      </div>
+    </motion.div>
+  );
+}
+
 export default function Services() {
   return (
-    <section id="services" className="relative w-full bg-[#060a10] py-20 text-white">
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute left-1/2 top-0 h-80 w-80 -translate-x-1/2 rounded-full bg-cyan-500/10 blur-3xl" />
-      </div>
+    <section id="services" className="py-20 bg-slate-900">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="max-w-2xl">
+          <h2 className="text-3xl sm:text-4xl font-semibold text-white">Services</h2>
+          <p className="mt-3 text-slate-300/80">Premium care packages crafted for protection, clarity, and that neon-clean finish.</p>
+        </div>
 
-      <div className="mx-auto w-full max-w-7xl px-6">
-        <motion.h2
-          className="mb-10 text-center font-heading text-3xl font-semibold tracking-tight text-slate-100 md:text-4xl"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          Our Signature Services
-        </motion.h2>
-
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {services.map(({ icon: Icon, title, desc, accent }, i) => (
-            <motion.div
-              key={title}
-              className={`relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 shadow-lg transition hover:shadow-cyan-500/10`}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.05 }}
-              whileHover={{ y: -4 }}
-            >
-              <div className={`pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-gradient-to-br ${accent} blur-2xl`} />
-              <div className="mb-4 flex items-center gap-3">
-                <div className="rounded-xl border border-cyan-300/30 bg-cyan-400/10 p-3 text-cyan-300 shadow-[0_0_24px_rgba(0,220,255,0.25)]">
-                  <Icon size={24} />
-                </div>
-                <h3 className="font-medium tracking-tight text-slate-100">{title}</h3>
-              </div>
-              <p className="text-sm leading-relaxed text-slate-300">{desc}</p>
-            </motion.div>
+        <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {services.map((s) => (
+            <ServiceCard key={s.title} icon={s.icon} title={s.title} desc={s.desc} accent={s.accent} />
           ))}
         </div>
       </div>

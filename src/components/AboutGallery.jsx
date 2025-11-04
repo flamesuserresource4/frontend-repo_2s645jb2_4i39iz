@@ -1,78 +1,64 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const beforeAfter = [
-  {
-    before: 'https://images.unsplash.com/photo-1530124566582-a618bc2615dc?q=80&w=1200&auto=format&fit=crop',
-    after: 'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?q=80&w=1200&auto=format&fit=crop',
-  },
-  {
-    before: 'https://images.unsplash.com/photo-1511919884226-fd3cad34687c?q=80&w=1200&auto=format&fit=crop',
-    after: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1200&auto=format&fit=crop',
-  },
-  {
-    before: 'https://images.unsplash.com/photo-1504215680853-026ed2a45def?q=80&w=1200&auto=format&fit=crop',
-    after: 'https://images.unsplash.com/photo-1511919884226-fd3cad34687c?q=80&w=1200&auto=format&fit=crop',
-  },
-];
-
 export default function AboutGallery() {
   return (
-    <section id="about" className="relative w-full bg-[#070b12] py-20 text-white">
-      <div className="mx-auto w-full max-w-7xl px-6">
-        <div className="grid gap-12 md:grid-cols-2">
+    <section id="gallery" className="py-20 bg-gradient-to-b from-slate-900 to-slate-950">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="grid lg:grid-cols-2 gap-10 items-center">
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.4 }}
             transition={{ duration: 0.6 }}
-            className="flex flex-col justify-center"
           >
-            <h2 className="mb-4 font-heading text-3xl font-semibold tracking-tight text-slate-100 md:text-4xl">
-              About Our Studio
-            </h2>
-            <p className="mb-4 text-slate-300">
-              We are a high-end car care brand focused on precision, protection, and presentation. Our studio uses studio-grade lighting, advanced chemicals, and meticulous technique to deliver a flawless finish.
+            <h2 className="text-3xl sm:text-4xl font-semibold text-white">About Our Finish</h2>
+            <p className="mt-4 text-slate-300/80 leading-relaxed">
+              We obsess over the details so you don’t have to. From swirl-free paint correction to ceramic protection,
+              every step is performed with precision and care. Our passion for craft shows in the reflections.
             </p>
-            <p className="text-slate-300">
-              From daily drivers to collectible exotics, our workflow is tailored to your vehicle. Expect luxury hospitality, transparent recommendations, and results that glow under any spotlight.
+            <p className="mt-3 text-slate-300/80">
+              Explore some before/after results below — hover to reveal the transformation.
             </p>
           </motion.div>
 
           <motion.div
-            id="gallery"
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.4 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className=""
+            className="grid sm:grid-cols-2 gap-6"
           >
-            <h3 className="mb-4 text-lg font-medium text-slate-200">Before / After Gallery</h3>
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-              {beforeAfter.map((item, i) => (
-                <div key={i} className="group relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10 bg-white/5">
-                  <img
-                    src={item.before}
-                    alt="Before"
-                    className="absolute inset-0 h-full w-full object-cover opacity-100 transition duration-500 group-hover:opacity-0"
-                    loading="lazy"
-                  />
-                  <img
-                    src={item.after}
-                    alt="After"
-                    className="absolute inset-0 h-full w-full origin-center scale-105 object-cover opacity-0 transition duration-500 group-hover:scale-100 group-hover:opacity-100"
-                    loading="lazy"
-                  />
-                  <div className="pointer-events-none absolute inset-x-0 bottom-0 flex items-center justify-between p-3 text-xs text-white/90">
-                    <span className="rounded bg-black/40 px-2 py-1 backdrop-blur">
-                      Hover to reveal
-                    </span>
-                    <span className="rounded bg-cyan-500/30 px-2 py-1 text-cyan-50 backdrop-blur">
-                      After
-                    </span>
-                  </div>
-                </div>
-              ))}
+            {/* Before/After card 1 */}
+            <div className="group relative overflow-hidden rounded-2xl border border-white/10">
+              <img
+                src="https://images.unsplash.com/photo-1549921296-3b4a6b4f7c37?q=80&w=1200&auto=format&fit=crop"
+                alt="Before detail"
+                className="h-56 w-full object-cover scale-105"
+              />
+              <img
+                src="https://images.unsplash.com/photo-1619767886558-efdc259cde1b?q=80&w=1200&auto=format&fit=crop"
+                alt="After detail"
+                className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+              />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent" />
+              <div className="absolute bottom-3 left-3 px-2 py-1 rounded bg-black/50 text-white text-xs">Hover to reveal</div>
+            </div>
+
+            {/* Before/After card 2 */}
+            <div className="group relative overflow-hidden rounded-2xl border border-white/10">
+              <img
+                src="https://images.unsplash.com/photo-1530047715425-c8aa3c73652d?q=80&w=1200&auto=format&fit=crop"
+                alt="Before interior"
+                className="h-56 w-full object-cover scale-105"
+              />
+              <img
+                src="https://images.unsplash.com/photo-1619767885836-c7cd3e76eb1d?q=80&w=1200&auto=format&fit=crop"
+                alt="After interior"
+                className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+              />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent" />
+              <div className="absolute bottom-3 left-3 px-2 py-1 rounded bg-black/50 text-white text-xs">Hover to reveal</div>
             </div>
           </motion.div>
         </div>
