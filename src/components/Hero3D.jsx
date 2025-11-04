@@ -15,17 +15,14 @@ const FloatingIcon = ({ Icon, delay = 0 }) => (
 );
 
 export default function Hero3D() {
-  const sceneUrl = import.meta.env.VITE_SPLINE_SCENE;
+  // Use the provided Spline scene as the main 3D object.
+  const sceneUrl = 'https://prod.spline.design/m8wpIQzXWhEh9Yek/scene.splinecode';
 
   return (
     <section id="home" className="relative h-[90vh] min-h-[640px] w-full overflow-hidden bg-gradient-to-b from-slate-900 via-slate-900 to-slate-800">
       {/* 3D Scene */}
       <div className="absolute inset-0">
-        {sceneUrl ? (
-          <Spline scene={sceneUrl} style={{ width: '100%', height: '100%' }} />
-        ) : (
-          <div className="w-full h-full bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.08),transparent_50%),radial-gradient(circle_at_80%_30%,rgba(59,130,246,0.15),transparent_50%)]" />
-        )}
+        <Spline scene={sceneUrl} style={{ width: '100%', height: '100%' }} />
       </div>
 
       {/* Subtle gradient glow overlay (doesn't block scene) */}
